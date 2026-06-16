@@ -18,9 +18,8 @@ Actor.belongsToMany(Pelicula, { through: Elenco });
 
 const app = express();
 
-// Ruta principal
 app.get('/', (req, res) => {
-    res.send('API GraphQL de Películas funcionando correctamente');
+    res.redirect('/graphql');
 });
 
 app.use('/graphql',
