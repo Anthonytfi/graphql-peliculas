@@ -104,6 +104,24 @@ const Mutation = new GraphQLObjectType({
             }
         },
 
+        crearPelicula: {
+            type: PeliculaType,
+            args: {
+                titulo: { type: new GraphQLNonNull(GraphQLString) },
+                anio: { type: new GraphQLNonNull(GraphQLInt) },
+                directorId: { type: new GraphQLNonNull(GraphQLInt) }
+            },
+            async resolve(parent, args) {
+                const pelicula = await Pelicula.create({
+                titulo: args.titulo,
+                anio: args.anio,
+                DirectorId: args.directorId
+                });
+
+                return pelicula;
+            }
+            },
+
         actualizarDirector: {
             type: DirectorType,
 
